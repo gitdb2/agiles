@@ -3,7 +3,6 @@ package edu.ncsu.monopoly.logic.gameboarad;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
-import edu.ncsu.monopoly.logic.GameMaster;
 import edu.ncsu.monopoly.logic.card.Card;
 import edu.ncsu.monopoly.logic.cell.Cell;
 import edu.ncsu.monopoly.logic.cell.GoCell;
@@ -11,12 +10,12 @@ import edu.ncsu.monopoly.logic.cell.PropertyCell;
 
 public class GameBoard {
 
-	private ArrayList cells = new ArrayList();
-    private ArrayList chanceCards = new ArrayList();
+	private ArrayList<Cell> cells = new ArrayList<Cell>();
+    private ArrayList<Card> chanceCards = new ArrayList<Card>();
 	//the key of colorGroups is the name of the color group.
-	private Hashtable colorGroups = new Hashtable();
-	private ArrayList communityChestCards = new ArrayList();
-	private GameMaster gameMaster;
+	private Hashtable<String, Integer> colorGroups = new Hashtable<String, Integer>();
+	private ArrayList<Card> communityChestCards = new ArrayList<Card>();
+
 	
 	public GameBoard() {
 		Cell go = new GoCell();
@@ -42,21 +41,21 @@ public class GameBoard {
 	}
 
     public Card drawCCCard() {
-        Card card = (Card)communityChestCards.get(0);
+        Card card = communityChestCards.get(0);
         communityChestCards.remove(0);
         addCard(card);
         return card;
     }
 
     public Card drawChanceCard() {
-        Card card = (Card)chanceCards.get(0);
+        Card card = chanceCards.get(0);
         chanceCards.remove(0);
         addCard(card);
         return card;
     }
 
 	public Cell getCell(int newIndex) {
-		return (Cell)cells.get(newIndex);
+		return cells.get(newIndex);
 	}
 	
 	public int getCellNumber() {
@@ -81,7 +80,7 @@ public class GameBoard {
 	}
 	
 	public int getPropertyNumberForColor(String name) {
-		Integer number = (Integer)colorGroups.get(name);
+		Integer number = colorGroups.get(name);
 		if(number != null) {
 			return number.intValue();
 		}
@@ -90,7 +89,7 @@ public class GameBoard {
 
 	public Cell queryCell(String string) {
 		for(int i = 0; i < cells.size(); i++){
-			Cell temp = (Cell)cells.get(i); 
+			Cell temp = cells.get(i); 
 			if(temp.getName().equals(string)) {
 				return temp;
 			}
@@ -100,7 +99,7 @@ public class GameBoard {
 	
 	public int queryCellIndex(String string){
 		for(int i = 0; i < cells.size(); i++){
-			Cell temp = (Cell)cells.get(i); 
+			Cell temp = cells.get(i); 
 			if(temp.getName().equals(string)) {
 				return i;
 			}
