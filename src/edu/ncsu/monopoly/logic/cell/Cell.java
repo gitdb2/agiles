@@ -6,8 +6,8 @@ public abstract class Cell {
 	public static int InflationParameter = 1;
 	public static int NoInflationParameter = 0;
 	
-	private boolean available = true;
-	private String name;
+	protected boolean available = true;
+	protected String name;
 	protected Player owner;
 
 	public String getName() {
@@ -43,5 +43,6 @@ public abstract class Cell {
     public String toString() {
         return name;
     }
+
 }
 

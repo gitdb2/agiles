@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
+import edu.ncsu.monopoly.logic.cell.BuyableCell;
 import edu.ncsu.monopoly.logic.cell.Cell;
 import edu.ncsu.monopoly.logic.cell.JailCell;
 import edu.ncsu.monopoly.logic.cell.PropertyCell;
@@ -14,15 +15,13 @@ import edu.ncsu.monopoly.logic.gameboarad.GameBoard;
 
 public class Player {
 	//the key of colorGroups is the name of the color group.
-	private Hashtable colorGroups = new Hashtable();
+	private Hashtable<String, Integer> colorGroups = new Hashtable<String, Integer>();
 	private boolean inJail;
 	private int money;
 	private String name;
 
 	private Cell position;
-	private ArrayList properties = new ArrayList();
-	private ArrayList railroads = new ArrayList();
-	private ArrayList utilities = new ArrayList();
+	private ArrayList<BuyableCell> purchasedCells = new ArrayList<BuyableCell>();
 	
 	public Player() {
 		GameBoard gb = GameMaster.instance().getGameBoard();
@@ -32,27 +31,12 @@ public class Player {
 		}
 	}
 
-    public void buyProperty(Cell property, int amount) {
-        property.setOwner(this);
-        if(property instanceof PropertyCell) {
-            PropertyCell cell = (PropertyCell)property;
-            properties.add(cell);
-            colorGroups.put(
+    public void buyProperty(BuyableCell cell, int amount) {
+    	cell.setOwner(this);
+    	purchasedCells.add(cell);
+    	colorGroups.put(
                     cell.getColorGroup(), 
                     new Integer(getPropertyNumberForColor(cell.getColorGroup())+1));
-        }
-        if(property instanceof RailRoadCell) {
-            railroads.add(property);
-            colorGroups.put(
-                    RailRoadCell.COLOR_GROUP, 
-                    new Integer(getPropertyNumberForColor(RailRoadCell.COLOR_GROUP)+1));
-        }
-        if(property instanceof UtilityCell) {
-            utilities.add(property);
-            colorGroups.put(
-                    UtilityCell.COLOR_GROUP, 
-                    new Integer(getPropertyNumberForColor(UtilityCell.COLOR_GROUP)+1));
-        }
         setMoney(getMoney() - amount);
     }
 	
@@ -61,8 +45,8 @@ public class Player {
 	}
 
 	public boolean checkProperty(String property) {
-		for(int i=0;i<properties.size();i++) {
-			Cell cell = (Cell)properties.get(i);
+		for(int i=0;i<purchasedCells.size();i++) {
+			Cell cell = (Cell)purchasedCells.get(i);
 			if(cell.getName().equals(property)) {
 				return true;
 			}
@@ -80,7 +64,7 @@ public class Player {
 				cell.setNumHouses(0);
 			}
 			else {
-				player.properties.add(cell);
+				player.purchasedCells.add(cell);
 				colorGroups.put(
 						cell.getColorGroup(), 
 						new Integer(getPropertyNumberForColor(cell.getColorGroup())+1));
@@ -158,15 +142,15 @@ public class Player {
 	public boolean isInJail() {
 		return inJail;
 	}
+//
+//	public int numberOfRR() {
+//		return getPropertyNumberForColor(RailRoadCell.COLOR_GROUP);
+//	}
 
-	public int numberOfRR() {
-		return getPropertyNumberForColor(RailRoadCell.COLOR_GROUP);
-	}
-
-	public int numberOfUtil() {
-		return getPropertyNumberForColor(UtilityCell.COLOR_GROUP);
-	}
-	
+//	public int numberOfUtil() {
+//		return getPropertyNumberForColor(UtilityCell.COLOR_GROUP);
+//	}
+//	
 	public void payRentTo(Player owner, int rentValue) {
 		if(money < rentValue) {
 			owner.money += money;
@@ -187,7 +171,7 @@ public class Player {
 			Cell c = getPosition();
 			c.setAvailable(false);
 			if(c instanceof PropertyCell) {
-				PropertyCell cell = (PropertyCell)c;
+				Cell cell = (Cell)c;
 				purchaseProperty(cell);
 			}
 			if(c instanceof RailRoadCell) {
@@ -216,7 +200,7 @@ public class Player {
 		}
 	}
 	
-	private void purchaseProperty(PropertyCell cell) {
+	private void purchaseProperty(Cell cell) {
         buyProperty(cell, cell.getPrice());
 	}
 

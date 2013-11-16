@@ -3,10 +3,16 @@ package edu.ncsu.monopoly.logic.cell;
 import edu.ncsu.monopoly.logic.GameMaster;
 import edu.ncsu.monopoly.logic.Player;
 
-public class RailRoadCell extends Cell {
+public class RailRoadCell extends BuyableCell {
 	static private int baseRent;
-	static public String COLOR_GROUP = "RAILROAD";
+	static private final String COLOR_GROUP = "RAILROAD";
 	static private int price;
+
+	
+	
+	public RailRoadCell() {
+		super(COLOR_GROUP);
+	}
 
 	public static void setBaseRent(int baseRent) {
 		RailRoadCell.baseRent = baseRent;

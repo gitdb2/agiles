@@ -3,16 +3,14 @@ package edu.ncsu.monopoly.logic.cell;
 import edu.ncsu.monopoly.logic.GameMaster;
 import edu.ncsu.monopoly.logic.Player;
 
-public class PropertyCell extends Cell {
-	private String colorGroup;
+public class PropertyCell extends BuyableCell {
+	
 	private int housePrice;
 	private int numHouses;
 	private int rent;
 	private int sellPrice;
 
-	public String getColorGroup() {
-		return colorGroup;
-	}
+	
 
 	public int getHousePrice() {
 		return housePrice;
@@ -69,10 +67,6 @@ public class PropertyCell extends Cell {
 				currentPlayer.payRentTo(owner, getRent(Cell.InflationParameter));
 			}
 		}
-	}
-
-	public void setColorGroup(String colorGroup) {
-		this.colorGroup = colorGroup;
 	}
 
 	public void setHousePrice(int housePrice) {

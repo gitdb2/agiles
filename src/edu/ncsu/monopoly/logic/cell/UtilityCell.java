@@ -3,10 +3,14 @@ package edu.ncsu.monopoly.logic.cell;
 import edu.ncsu.monopoly.logic.GameMaster;
 import edu.ncsu.monopoly.logic.Player;
 
-public class UtilityCell extends Cell {
+public class UtilityCell extends BuyableCell {
 
-	public static final String COLOR_GROUP = "UTILITY";
+	private static final String COLOR_GROUP = "UTILITY";
 	private static int PRICE;
+
+	public UtilityCell() {
+		super(COLOR_GROUP);
+	}
 
 	public static void setPrice(int price) {
 		UtilityCell.PRICE = price;

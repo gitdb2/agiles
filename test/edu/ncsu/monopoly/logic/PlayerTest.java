@@ -6,7 +6,6 @@ import edu.ncsu.monopoly.gui.mocks.MockGUI;
 import edu.ncsu.monopoly.logic.GameMaster;
 import edu.ncsu.monopoly.logic.Player;
 import edu.ncsu.monopoly.logic.cell.Cell;
-import edu.ncsu.monopoly.logic.cell.PropertyCell;
 import edu.ncsu.monopoly.logic.gameboarad.GameBoard;
 import edu.ncsu.monopoly.logic.gameboarad.SimpleGameBoard;
 import junit.framework.TestCase;
@@ -30,8 +29,8 @@ public class PlayerTest extends TestCase {
 		player.purchase();
 		assertEquals(1380, player.getMoney());
 		assertEquals("Blue 3", player.getProperty(0).getName());
-		PropertyCell cell =
-			(PropertyCell) gameMaster.getGameBoard().queryCell("Blue 3");
+		Cell cell =
+			(Cell) gameMaster.getGameBoard().queryCell("Blue 3");
 		assertSame(player, cell.getOwner());
 	}
 
