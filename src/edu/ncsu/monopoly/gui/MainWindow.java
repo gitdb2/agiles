@@ -17,11 +17,15 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import edu.ncsu.monopoly.*;
-import edu.ncsu.monopoly.Cell;
-import edu.ncsu.monopoly.GameBoard;
-import edu.ncsu.monopoly.GameMaster;
-import edu.ncsu.monopoly.MonopolyGUI;
-import edu.ncsu.monopoly.Player;
+import edu.ncsu.monopoly.gui.dialog.BuyHouseDialog;
+import edu.ncsu.monopoly.gui.dialog.GUIRespondDialog;
+import edu.ncsu.monopoly.gui.dialog.GUITradeDialog;
+import edu.ncsu.monopoly.gui.dialog.TestDiceRollDialog;
+import edu.ncsu.monopoly.gui.dialog.UtilDiceRoll;
+import edu.ncsu.monopoly.gui.panel.GUICell;
+import edu.ncsu.monopoly.gui.panel.PlayerPanel;
+import edu.ncsu.monopoly.logic.cell.Cell;
+import edu.ncsu.monopoly.logic.gameboarad.GameBoard;
 
 public class MainWindow extends JFrame implements MonopolyGUI{
 	JPanel eastPanel = new JPanel();
