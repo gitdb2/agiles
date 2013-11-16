@@ -2,7 +2,7 @@ package edu.ncsu.monopoly.gui.formatter;
 
 import java.util.Hashtable;
 
-import edu.ncsu.monopoly.*;
+import edu.ncsu.monopoly.logic.*;
 import edu.ncsu.monopoly.logic.cell.CardCell;
 import edu.ncsu.monopoly.logic.cell.Cell;
 import edu.ncsu.monopoly.logic.cell.FreeParkingCell;

@@ -1,10 +1,10 @@
-package edu.ncsu.monopoly;
+package edu.ncsu.monopoly.gui.formatter;
 
 
 
-import edu.ncsu.monopoly.Player;
 import edu.ncsu.monopoly.gui.formatter.GoCellInfoFormatter;
 import edu.ncsu.monopoly.gui.formatter.InfoFormatter;
+import edu.ncsu.monopoly.logic.Player;
 import edu.ncsu.monopoly.logic.cell.GoCell;
 import edu.ncsu.monopoly.logic.cell.PropertyCell;
 import junit.framework.TestCase;

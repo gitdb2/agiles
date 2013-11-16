@@ -1,8 +1,11 @@
-package edu.ncsu.monopoly;
+package edu.ncsu.monopoly.logic;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import edu.ncsu.monopoly.interfaces.MonopolyGUI;
+import edu.ncsu.monopoly.interfaces.RespondDialog;
+import edu.ncsu.monopoly.interfaces.TradeDialog;
 import edu.ncsu.monopoly.logic.card.Card;
 import edu.ncsu.monopoly.logic.cell.CardCell;
 import edu.ncsu.monopoly.logic.cell.Cell;

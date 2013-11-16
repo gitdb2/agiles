@@ -2,8 +2,8 @@ package edu.ncsu.monopoly.logic.card;
 
 
 
-import edu.ncsu.monopoly.GameMaster;
-import edu.ncsu.monopoly.MockGUI;
+import edu.ncsu.monopoly.gui.mocks.MockGUI;
+import edu.ncsu.monopoly.logic.GameMaster;
 import edu.ncsu.monopoly.logic.card.Card;
 import edu.ncsu.monopoly.logic.card.MoneyCard;
 import edu.ncsu.monopoly.logic.gameboarad.GameBoardCCGainMoney;

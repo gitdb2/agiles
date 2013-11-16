@@ -1,15 +1,16 @@
-package edu.ncsu.monopoly;
+package edu.ncsu.monopoly.logic;
 
 
 
 import java.util.ArrayList;
 
-import edu.ncsu.monopoly.GameMaster;
-import edu.ncsu.monopoly.MonopolyGUI;
-import edu.ncsu.monopoly.Player;
-import edu.ncsu.monopoly.RespondDialog;
-import edu.ncsu.monopoly.TradeDeal;
-import edu.ncsu.monopoly.TradeDialog;
+import edu.ncsu.monopoly.gui.mocks.MockGUI;
+import edu.ncsu.monopoly.interfaces.MonopolyGUI;
+import edu.ncsu.monopoly.interfaces.RespondDialog;
+import edu.ncsu.monopoly.interfaces.TradeDialog;
+import edu.ncsu.monopoly.logic.GameMaster;
+import edu.ncsu.monopoly.logic.Player;
+import edu.ncsu.monopoly.logic.TradeDeal;
 import edu.ncsu.monopoly.logic.gameboarad.GameBoardFull;
 import junit.framework.TestCase;
 

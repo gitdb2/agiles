@@ -1,6 +1,6 @@
 package edu.ncsu.monopoly.gui.formatter;
 
-import edu.ncsu.monopoly.Player;
+import edu.ncsu.monopoly.logic.Player;
 import edu.ncsu.monopoly.logic.cell.Cell;
 import edu.ncsu.monopoly.logic.cell.UtilityCell;
 

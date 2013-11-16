@@ -5,8 +5,8 @@ package edu.ncsu.monopoly.logic.cell;
 
 import javax.naming.NoInitialContextException;
 
-import edu.ncsu.monopoly.GameMaster;
-import edu.ncsu.monopoly.MockGUI;
+import edu.ncsu.monopoly.gui.mocks.MockGUI;
+import edu.ncsu.monopoly.logic.GameMaster;
 import edu.ncsu.monopoly.logic.cell.Cell;
 import edu.ncsu.monopoly.logic.cell.PropertyCell;
 import edu.ncsu.monopoly.logic.gameboarad.SimpleGameBoard;

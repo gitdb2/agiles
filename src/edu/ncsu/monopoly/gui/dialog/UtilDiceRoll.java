@@ -10,7 +10,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import edu.ncsu.monopoly.GameMaster;
+import edu.ncsu.monopoly.logic.GameMaster;
 
 public class UtilDiceRoll extends JDialog {
 	

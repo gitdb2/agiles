@@ -1,12 +1,12 @@
-package edu.ncsu.monopoly;
+package edu.ncsu.monopoly.gui.mocks;
 
-import edu.ncsu.monopoly.MockRespondDialog;
-import edu.ncsu.monopoly.MockTradeDialog;
-import edu.ncsu.monopoly.MonopolyGUI;
-import edu.ncsu.monopoly.Player;
-import edu.ncsu.monopoly.RespondDialog;
-import edu.ncsu.monopoly.TradeDeal;
-import edu.ncsu.monopoly.TradeDialog;
+import edu.ncsu.monopoly.gui.mocks.MockRespondDialog;
+import edu.ncsu.monopoly.gui.mocks.MockTradeDialog;
+import edu.ncsu.monopoly.interfaces.MonopolyGUI;
+import edu.ncsu.monopoly.interfaces.RespondDialog;
+import edu.ncsu.monopoly.interfaces.TradeDialog;
+import edu.ncsu.monopoly.logic.Player;
+import edu.ncsu.monopoly.logic.TradeDeal;
 
 public class MockGUI implements MonopolyGUI {
     private boolean btnDrawCardState, btnEndTurnState, btnGetOutOfJailState;

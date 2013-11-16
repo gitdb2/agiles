@@ -3,7 +3,7 @@ package edu.ncsu.monopoly.logic.gameboarad;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
-import edu.ncsu.monopoly.GameMaster;
+import edu.ncsu.monopoly.logic.GameMaster;
 import edu.ncsu.monopoly.logic.card.Card;
 import edu.ncsu.monopoly.logic.cell.Cell;
 import edu.ncsu.monopoly.logic.cell.GoCell;

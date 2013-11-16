@@ -5,8 +5,8 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 
-import edu.ncsu.monopoly.*;
 import edu.ncsu.monopoly.gui.formatter.InfoFormatter;
+import edu.ncsu.monopoly.logic.*;
 import edu.ncsu.monopoly.logic.cell.Cell;
 
 public class GUICell extends JPanel {

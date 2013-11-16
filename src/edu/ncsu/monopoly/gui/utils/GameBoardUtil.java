@@ -1,4 +1,4 @@
-package edu.ncsu.monopoly.gui;
+package edu.ncsu.monopoly.gui.utils;
 
 import java.awt.Dimension;
 import java.util.ArrayList;

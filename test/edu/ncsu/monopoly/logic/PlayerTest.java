@@ -1,9 +1,10 @@
-package edu.ncsu.monopoly;
+package edu.ncsu.monopoly.logic;
 
 
 
-import edu.ncsu.monopoly.GameMaster;
-import edu.ncsu.monopoly.Player;
+import edu.ncsu.monopoly.gui.mocks.MockGUI;
+import edu.ncsu.monopoly.logic.GameMaster;
+import edu.ncsu.monopoly.logic.Player;
 import edu.ncsu.monopoly.logic.cell.Cell;
 import edu.ncsu.monopoly.logic.cell.PropertyCell;
 import edu.ncsu.monopoly.logic.gameboarad.GameBoard;

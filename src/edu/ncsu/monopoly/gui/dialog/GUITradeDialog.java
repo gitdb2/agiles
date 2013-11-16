@@ -7,7 +7,8 @@ import java.util.List;
 
 import javax.swing.*;
 
-import edu.ncsu.monopoly.*;
+import edu.ncsu.monopoly.interfaces.TradeDialog;
+import edu.ncsu.monopoly.logic.*;
 import edu.ncsu.monopoly.logic.cell.Cell;
 
 public class GUITradeDialog extends JDialog implements TradeDialog {

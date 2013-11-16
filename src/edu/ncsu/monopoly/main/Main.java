@@ -2,8 +2,8 @@ package edu.ncsu.monopoly.main;
 
 import javax.swing.JOptionPane;
 
-import edu.ncsu.monopoly.*;
 import edu.ncsu.monopoly.gui.MainWindow;
+import edu.ncsu.monopoly.logic.*;
 import edu.ncsu.monopoly.logic.gameboarad.GameBoard;
 import edu.ncsu.monopoly.logic.gameboarad.GameBoardFull;
 

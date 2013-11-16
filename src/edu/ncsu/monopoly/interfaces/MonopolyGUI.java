@@ -1,4 +1,7 @@
-package edu.ncsu.monopoly;
+package edu.ncsu.monopoly.interfaces;
+
+import edu.ncsu.monopoly.logic.Player;
+import edu.ncsu.monopoly.logic.TradeDeal;
 
 public interface MonopolyGUI {
 	public void enableEndTurnBtn(int playerIndex);

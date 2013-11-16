@@ -1,6 +1,6 @@
 package edu.ncsu.monopoly.logic.cell;
 
-import edu.ncsu.monopoly.Player;
+import edu.ncsu.monopoly.logic.Player;
 
 public abstract class Cell {
 	public static int InflationParameter = 1;

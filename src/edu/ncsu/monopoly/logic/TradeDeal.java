@@ -1,4 +1,4 @@
-package edu.ncsu.monopoly;
+package edu.ncsu.monopoly.logic;
 
 public class TradeDeal {
     private int amount;

@@ -1,7 +1,7 @@
 package edu.ncsu.monopoly.logic.card;
 
-import edu.ncsu.monopoly.GameMaster;
-import edu.ncsu.monopoly.Player;
+import edu.ncsu.monopoly.logic.GameMaster;
+import edu.ncsu.monopoly.logic.Player;
 
 public class MoneyCard extends Card {
     private int amount;

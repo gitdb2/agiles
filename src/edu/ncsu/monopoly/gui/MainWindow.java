@@ -16,7 +16,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-import edu.ncsu.monopoly.*;
 import edu.ncsu.monopoly.gui.dialog.BuyHouseDialog;
 import edu.ncsu.monopoly.gui.dialog.GUIRespondDialog;
 import edu.ncsu.monopoly.gui.dialog.GUITradeDialog;
@@ -24,6 +23,11 @@ import edu.ncsu.monopoly.gui.dialog.TestDiceRollDialog;
 import edu.ncsu.monopoly.gui.dialog.UtilDiceRoll;
 import edu.ncsu.monopoly.gui.panel.GUICell;
 import edu.ncsu.monopoly.gui.panel.PlayerPanel;
+import edu.ncsu.monopoly.gui.utils.GameBoardUtil;
+import edu.ncsu.monopoly.interfaces.MonopolyGUI;
+import edu.ncsu.monopoly.interfaces.RespondDialog;
+import edu.ncsu.monopoly.interfaces.TradeDialog;
+import edu.ncsu.monopoly.logic.*;
 import edu.ncsu.monopoly.logic.cell.Cell;
 import edu.ncsu.monopoly.logic.gameboarad.GameBoard;
 

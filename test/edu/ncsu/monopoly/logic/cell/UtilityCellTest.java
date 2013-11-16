@@ -2,8 +2,8 @@ package edu.ncsu.monopoly.logic.cell;
 
 
 
-import edu.ncsu.monopoly.GameMaster;
-import edu.ncsu.monopoly.MockGUI;
+import edu.ncsu.monopoly.gui.mocks.MockGUI;
+import edu.ncsu.monopoly.logic.GameMaster;
 import edu.ncsu.monopoly.logic.cell.UtilityCell;
 import edu.ncsu.monopoly.logic.gameboarad.GameBoardUtility;
 import junit.framework.TestCase;

@@ -1,4 +1,8 @@
-package edu.ncsu.monopoly;
+package edu.ncsu.monopoly.gui.mocks;
+
+import edu.ncsu.monopoly.interfaces.TradeDialog;
+import edu.ncsu.monopoly.logic.GameMaster;
+import edu.ncsu.monopoly.logic.TradeDeal;
 
 public class MockTradeDialog implements TradeDialog {
 

@@ -13,7 +13,7 @@ import javax.swing.JTextArea;
 import javax.swing.OverlayLayout;
 import javax.swing.border.BevelBorder;
 
-import edu.ncsu.monopoly.*;
+import edu.ncsu.monopoly.logic.*;
 import edu.ncsu.monopoly.logic.card.Card;
 import edu.ncsu.monopoly.logic.cell.Cell;
 

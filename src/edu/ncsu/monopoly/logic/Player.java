@@ -1,4 +1,4 @@
-package edu.ncsu.monopoly;
+package edu.ncsu.monopoly.logic;
 
 import java.util.ArrayList;
 import java.util.Enumeration;
