@@ -7,6 +7,7 @@ import edu.ncsu.monopoly.interfaces.MonopolyGUI;
 import edu.ncsu.monopoly.interfaces.RespondDialog;
 import edu.ncsu.monopoly.interfaces.TradeDialog;
 import edu.ncsu.monopoly.logic.card.Card;
+import edu.ncsu.monopoly.logic.cell.BuyableCell;
 import edu.ncsu.monopoly.logic.cell.CardCell;
 import edu.ncsu.monopoly.logic.cell.Cell;
 import edu.ncsu.monopoly.logic.die.Die;
@@ -132,8 +133,8 @@ public class GameMaster {
 
     public void completeTrade(TradeDeal deal) {
         Player seller = getPlayer(deal.getPlayerIndex());
-        Cell property = gameBoard.queryCell(deal.getPropertyName());
-        seller.sellProperty(property, deal.getAmount());
+        BuyableCell property = (BuyableCell) gameBoard.queryCell(deal.getPropertyName());
+        seller.sellCell(property, deal.getAmount());
         getCurrentPlayer().buyProperty(property, deal.getAmount());
     }
 

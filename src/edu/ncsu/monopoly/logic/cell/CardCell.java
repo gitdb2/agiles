@@ -1,6 +1,6 @@
 package edu.ncsu.monopoly.logic.cell;
 
-public class CardCell extends Cell {
+public class CardCell extends NotBuyableCell {
     private int type;
     
     public CardCell(int type, String name) {

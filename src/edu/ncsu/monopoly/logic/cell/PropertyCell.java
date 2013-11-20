@@ -2,6 +2,7 @@ package edu.ncsu.monopoly.logic.cell;
 
 import edu.ncsu.monopoly.logic.GameMaster;
 import edu.ncsu.monopoly.logic.Player;
+import edu.ncsu.monopoly.logic.cell.visitor.property.collector.IVisitorCollectCells;
 
 public class PropertyCell extends BuyableCell {
 	
@@ -10,7 +11,10 @@ public class PropertyCell extends BuyableCell {
 	private int rent;
 	private int sellPrice;
 
-	
+	@Override
+	public void acceptVisitorCollectCells(IVisitorCollectCells visitor) {
+		 visitor.visit(this);
+	}
 
 	public int getHousePrice() {
 		return housePrice;

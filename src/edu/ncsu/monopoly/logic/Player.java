@@ -2,25 +2,38 @@ package edu.ncsu.monopoly.logic;
 
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.HashSet;
 import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import edu.ncsu.monopoly.logic.cell.BuyableCell;
 import edu.ncsu.monopoly.logic.cell.Cell;
 import edu.ncsu.monopoly.logic.cell.JailCell;
+import edu.ncsu.monopoly.logic.cell.NotBuyableCell;
 import edu.ncsu.monopoly.logic.cell.PropertyCell;
 import edu.ncsu.monopoly.logic.cell.RailRoadCell;
 import edu.ncsu.monopoly.logic.cell.UtilityCell;
+import edu.ncsu.monopoly.logic.cell.visitor.cell.buyer.VisitorBuyer;
+import edu.ncsu.monopoly.logic.cell.visitor.property.collector.IVisitorCollectCells;
+import edu.ncsu.monopoly.logic.cell.visitor.property.collector.VisitorCollectCells;
 import edu.ncsu.monopoly.logic.gameboarad.GameBoard;
 
 
 public class Player {
 	//the key of colorGroups is the name of the color group.
-	private Hashtable<String, Integer> colorGroups = new Hashtable<String, Integer>();
+//	private Hashtable<String, Integer> colorGroups = new Hashtable<String, Integer>();
 	private boolean inJail;
 	private int money;
 	private String name;
 
 	private Cell position;
+	
+	
+	private Hashtable<String,  ArrayList<BuyableCell>> colorGroups = new Hashtable<String,  ArrayList<BuyableCell>>();
+	
 	private ArrayList<BuyableCell> purchasedCells = new ArrayList<BuyableCell>();
 	
 	public Player() {
@@ -34,11 +47,30 @@ public class Player {
     public void buyProperty(BuyableCell cell, int amount) {
     	cell.setOwner(this);
     	purchasedCells.add(cell);
-    	colorGroups.put(
-                    cell.getColorGroup(), 
-                    new Integer(getPropertyNumberForColor(cell.getColorGroup())+1));
+    	
+    	addToGroupColors(cell);
+    	
         setMoney(getMoney() - amount);
     }
+    /**
+     * Agrega una celda al mapa de colores y si no existe crea la lista y la inserta con el color como clave
+     * @param cell
+     */
+	private void addToGroupColors(BuyableCell cell) {
+		ArrayList<BuyableCell> tempCelsByColor = colorGroups.get(cell.getColorGroup());
+    	if(tempCelsByColor == null){
+    		tempCelsByColor = new ArrayList<BuyableCell>();
+    		colorGroups.put(cell.getColorGroup(), tempCelsByColor);
+    	}
+    	tempCelsByColor.add(cell);
+	}
+	public void removeFromGroupColors(BuyableCell cell){
+		List<BuyableCell> coloredCells =  colorGroups.get(cell.getColorGroup());
+		if(coloredCells!= null){
+			coloredCells.remove(cell);
+		}
+	}
+	
 	
 	public boolean canBuyHouse() {
 		return (getMonopolies().length != 0);
@@ -56,8 +88,8 @@ public class Player {
 	}
 	
 	public void exchangeProperty(Player player) {
-		for(int i = 0; i < getPropertyNumber(); i++ ) {
-			PropertyCell cell = getProperty(i);
+
+		for (PropertyCell cell : getProperties()) {
 			cell.setOwner(player);
 			if(player == null) {
 				cell.setAvailable(true);
@@ -65,20 +97,28 @@ public class Player {
 			}
 			else {
 				player.purchasedCells.add(cell);
-				colorGroups.put(
-						cell.getColorGroup(), 
-						new Integer(getPropertyNumberForColor(cell.getColorGroup())+1));
+				addToGroupColors(cell);
 			}
 		}
-		properties.clear();
+
+		purchasedCells.clear();
+	}
+	/**
+	 * Metodo para obtener las celdas de tipo PropertyCell mediante visitor
+	 * @return
+	 */
+	private List<PropertyCell> getProperties() {
+		VisitorCollectCells visitor = new VisitorCollectCells();
+		for (BuyableCell cell : purchasedCells) {
+			cell.acceptVisitorCollectCells(visitor);
+		}
+		return visitor.getProperties();
 	}
     
     public Cell[] getAllProperties() {
-        ArrayList list = new ArrayList();
-        list.addAll(properties);
-        list.addAll(utilities);
-        list.addAll(railroads);
-        return (Cell[])list.toArray(new Cell[list.size()]);
+        ArrayList<Cell> list = new ArrayList<Cell>();
+        list.addAll(purchasedCells);
+        return list.toArray(new Cell[list.size()]);
     }
 
 	public int getMoney() {
@@ -86,17 +126,19 @@ public class Player {
 	}
 	
 	public String[] getMonopolies() {
-		ArrayList monopolies = new ArrayList();
-		Enumeration colors = colorGroups.keys();
-		while(colors.hasMoreElements()) {
-			String color = (String)colors.nextElement();
-            if(!(color.equals(RailRoadCell.COLOR_GROUP)) && !(color.equals(UtilityCell.COLOR_GROUP))) {
-    			Integer num = (Integer)colorGroups.get(color);
-    			GameBoard gameBoard = GameMaster.instance().getGameBoard();
-    			if(num.intValue() == gameBoard.getPropertyNumberForColor(color)) {
-    				monopolies.add(color);
-    			}
-            }
+		ArrayList<String> monopolies = new ArrayList<String>();
+				
+		Set<String> colorSet = new HashSet<String>();
+		for (BuyableCell cell : getProperties()) {
+			colorSet.add(cell.getColorGroup());
+		}
+		
+		for (String color : colorSet) {
+			int num = getPropertyNumberForColor(color);
+			GameBoard gameBoard = GameMaster.instance().getGameBoard();
+			if(num == gameBoard.getPropertyNumberForColor(color)) {
+				monopolies.add(color);
+			}
 		}
 		return (String[])monopolies.toArray(new String[monopolies.size()]);
 	}
@@ -119,18 +161,30 @@ public class Player {
 		return this.position;
 	}
 	
+	/**
+	 * SOLO USADO EN TESTS
+	 * @return
+	 */
+	@Deprecated
 	public PropertyCell getProperty(int index) {
-		return (PropertyCell)properties.get(index);
+		return getProperties().get(index);
 	}
 	
+	/**
+	 * SOLO USADO EN TESTS
+	 * @return
+	 */
+	@Deprecated
 	public int getPropertyNumber() {
-		return properties.size();
+		return getProperties().size();
 	}
 
-	private int getPropertyNumberForColor(String name) {
-		Integer number = (Integer)colorGroups.get(name);
-		if(number != null) {
-			return number.intValue();
+	
+	public int getPropertyNumberForColor(String name) {
+		
+		List<BuyableCell> list= colorGroups.get(name);
+		if(list != null) {
+			return list.size();
 		}
 		return 0;
 	}
@@ -168,20 +222,11 @@ public class Player {
 	
 	public void purchase() {
 		if(getPosition().isAvailable()) {
-			Cell c = getPosition();
-			c.setAvailable(false);
-			if(c instanceof PropertyCell) {
-				Cell cell = (Cell)c;
-				purchaseProperty(cell);
-			}
-			if(c instanceof RailRoadCell) {
-				RailRoadCell cell = (RailRoadCell)c;
-				purchaseRailRoad(cell);
-			}
-			if(c instanceof UtilityCell) {
-				UtilityCell cell = (UtilityCell)c;
-				purchaseUtility(cell);
-			}
+			Cell cell = getPosition();
+			cell.setAvailable(false);
+
+			purchaseCell(cell);
+		
 		}
 	}
 	
@@ -200,29 +245,28 @@ public class Player {
 		}
 	}
 	
-	private void purchaseProperty(Cell cell) {
-        buyProperty(cell, cell.getPrice());
+	/**
+	 * Metodo generico para la compra de una celda
+	 * @param cell
+	 */
+	private void purchaseCell(Cell cell) {
+		VisitorBuyer visitor = new VisitorBuyer(this);
+		cell.acceptVisitorBuyer(visitor);
 	}
 
-	private void purchaseRailRoad(RailRoadCell cell) {
-	    buyProperty(cell, cell.getPrice());
-	}
+	
 
-	private void purchaseUtility(UtilityCell cell) {
-	    buyProperty(cell, cell.getPrice());
-	}
-
-    public void sellProperty(Cell property, int amount) {
-        property.setOwner(null);
-        if(property instanceof PropertyCell) {
-            properties.remove(property);
-        }
-        if(property instanceof RailRoadCell) {
-            railroads.remove(property);
-        }
-        if(property instanceof UtilityCell) {
-            utilities.remove(property);
-        }
+	/**
+	 * 
+	 * @param cell
+	 * @param amount
+	 */
+    public void sellCell(BuyableCell cell, int amount) {
+        cell.setOwner(null);
+        
+        removeFromGroupColors(cell);
+        
+        purchasedCells.remove(cell);
         setMoney(getMoney() + amount);
     }
 
@@ -247,8 +291,28 @@ public class Player {
     }
     
     public void resetProperty() {
-    	properties = new ArrayList();
-    	railroads = new ArrayList();
-    	utilities = new ArrayList();
+    	purchasedCells.clear();
+    	colorGroups.clear();
+	}
+
+    /**
+     * Solo para tests
+     * @return
+     */
+    public int numberOfRR() {
+
+    	VisitorCollectCells visitor = new VisitorCollectCells();
+    	for (BuyableCell cell : purchasedCells) {
+    		cell.acceptVisitorCollectCells(visitor);
+    	}
+    	return visitor.getRailRoads().size();
+    }
+
+	public int numberOfUtil() {
+	 	VisitorCollectCells visitor = new VisitorCollectCells();
+    	for (BuyableCell cell : purchasedCells) {
+    		cell.acceptVisitorCollectCells(visitor);
+    	}
+    	return visitor.getUtilities().size();
 	}
 }

@@ -2,6 +2,7 @@ package edu.ncsu.monopoly.logic.cell;
 
 import edu.ncsu.monopoly.logic.GameMaster;
 import edu.ncsu.monopoly.logic.Player;
+import edu.ncsu.monopoly.logic.cell.visitor.property.collector.IVisitorCollectCells;
 
 public class UtilityCell extends BuyableCell {
 
@@ -21,9 +22,10 @@ public class UtilityCell extends BuyableCell {
 	}
 
 	public int getRent(int diceRoll) {
-		if(owner.numberOfUtil() == 1) {
+		int count = owner.getPropertyNumberForColor(COLOR_GROUP);
+		if(count == 1) {
 			return diceRoll * 4;
-		} else if (owner.numberOfUtil() >= 2) {
+		} else if (count >= 2) {
 			return diceRoll * 10;
 		}
 		return 0;
@@ -39,5 +41,12 @@ public class UtilityCell extends BuyableCell {
 				currentPlayer.payRentTo(owner, getRent(diceRoll));
 			}
 		}
+	}
+	
+	
+	
+	@Override
+	public void acceptVisitorCollectCells(IVisitorCollectCells visitor) {
+		 visitor.visit(this);
 	}
 }

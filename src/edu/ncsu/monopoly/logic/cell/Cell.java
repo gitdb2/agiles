@@ -1,8 +1,10 @@
 package edu.ncsu.monopoly.logic.cell;
 
 import edu.ncsu.monopoly.logic.Player;
+import edu.ncsu.monopoly.logic.cell.visitor.cell.buyer.IVisitableBuyer;
+import edu.ncsu.monopoly.logic.cell.visitor.cell.buyer.IVisitorBuyer;
 
-public abstract class Cell {
+public abstract class Cell implements IVisitableBuyer{
 	public static int InflationParameter = 1;
 	public static int NoInflationParameter = 0;
 	
@@ -43,6 +45,12 @@ public abstract class Cell {
     public String toString() {
         return name;
     }
+    
+
+	@Override
+	public void acceptVisitorBuyer(IVisitorBuyer visitor) {
+	//No hace nada	
+	}
 
 }
 

@@ -2,6 +2,7 @@ package edu.ncsu.monopoly.logic.cell;
 
 import edu.ncsu.monopoly.logic.GameMaster;
 import edu.ncsu.monopoly.logic.Player;
+import edu.ncsu.monopoly.logic.cell.visitor.property.collector.IVisitorCollectCells;
 
 public class RailRoadCell extends BuyableCell {
 	static private int baseRent;
@@ -27,7 +28,7 @@ public class RailRoadCell extends BuyableCell {
 	}
 
 	public int getRent() {
-		return RailRoadCell.baseRent * (int)Math.pow(2, owner.numberOfRR() - 1);
+		return RailRoadCell.baseRent * (int)Math.pow(2, owner.getPropertyNumberForColor(COLOR_GROUP) - 1);
 	}
 	
 	public void playAction() {
@@ -39,4 +40,10 @@ public class RailRoadCell extends BuyableCell {
 			}
 		}
 	}
+	
+	@Override
+	public void acceptVisitorCollectCells(IVisitorCollectCells visitor) {
+		 visitor.visit(this);
+	}
+	
 }

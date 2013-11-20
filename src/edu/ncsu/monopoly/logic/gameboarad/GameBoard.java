@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 import edu.ncsu.monopoly.logic.card.Card;
+import edu.ncsu.monopoly.logic.cell.BuyableCell;
 import edu.ncsu.monopoly.logic.cell.Cell;
 import edu.ncsu.monopoly.logic.cell.GoCell;
+import edu.ncsu.monopoly.logic.cell.NotBuyableCell;
 import edu.ncsu.monopoly.logic.cell.PropertyCell;
 
-public abstract class GameBoard {
+public class GameBoard {
 
 	private ArrayList<Cell> cells = new ArrayList<Cell>();
     private ArrayList<Card> chanceCards = new ArrayList<Card>();
@@ -18,8 +20,7 @@ public abstract class GameBoard {
 
 	
 	public GameBoard() {
-		Cell go = new GoCell();
-		addCell(go);
+		addCell(new GoCell());
 	}
 
     public void addCard(Card card) {
@@ -30,11 +31,12 @@ public abstract class GameBoard {
         }
     }
 	
+    
 	public void addCell(Cell cell) {
 		cells.add(cell);
 	}
 	
-	public void addCell(Cell cell) {
+	public void addCell(BuyableCell cell) {
 		int propertyNumber = getPropertyNumberForColor(cell.getColorGroup());
 		colorGroups.put(cell.getColorGroup(), new Integer(propertyNumber + 1));
         cells.add(cell);

@@ -1,6 +1,6 @@
 package edu.ncsu.monopoly.logic.cell;
 
-public class GoCell extends Cell {
+public class GoCell extends NotBuyableCell {
 	public GoCell() {
 		super.setName("Go");
 		setAvailable(false);
