@@ -9,7 +9,7 @@ import edu.ncsu.monopoly.gui.mocks.MockGUI;
 import edu.ncsu.monopoly.logic.GameMaster;
 import edu.ncsu.monopoly.logic.cell.Cell;
 import edu.ncsu.monopoly.logic.cell.PropertyCell;
-import edu.ncsu.monopoly.logic.gameboard.mocks.SimpleGameBoard;
+import edu.ncsu.monopoly.logic.gameboard.mocks.GameBoardSimple;
 import junit.framework.TestCase;
 
 public class PropertyCellTest extends TestCase {
@@ -18,7 +18,7 @@ public class PropertyCellTest extends TestCase {
 	
 	protected void setUp() {
 		gameMaster = GameMaster.instance();
-		gameMaster.setGameBoard(new SimpleGameBoard());
+		gameMaster.setGameBoard(new GameBoardSimple());
 		gameMaster.setNumberOfPlayers(2);
 		gameMaster.reset();
 		gameMaster.setGUI(new MockGUI());

@@ -7,10 +7,9 @@ import edu.ncsu.monopoly.logic.card.Card;
 import edu.ncsu.monopoly.logic.cell.BuyableCell;
 import edu.ncsu.monopoly.logic.cell.Cell;
 import edu.ncsu.monopoly.logic.cell.GoCell;
-import edu.ncsu.monopoly.logic.cell.NotBuyableCell;
 import edu.ncsu.monopoly.logic.cell.PropertyCell;
 
-public class GameBoard {
+public abstract class GameBoard {
 
 	private ArrayList<Cell> cells = new ArrayList<Cell>();
     private ArrayList<Card> chanceCards = new ArrayList<Card>();

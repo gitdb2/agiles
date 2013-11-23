@@ -5,7 +5,8 @@ package edu.ncsu.monopoly.logic.gameboard;
 import edu.ncsu.monopoly.logic.cell.Cell;
 import edu.ncsu.monopoly.logic.cell.PropertyCell;
 import edu.ncsu.monopoly.logic.gameboarad.GameBoard;
-import edu.ncsu.monopoly.logic.gameboard.mocks.SimpleGameBoard;
+import edu.ncsu.monopoly.logic.gameboard.mocks.GameBoardEmpty;
+import edu.ncsu.monopoly.logic.gameboard.mocks.GameBoardSimple;
 import junit.framework.TestCase;
 
 
@@ -15,7 +16,7 @@ public class GameboardTest extends TestCase {
 	GameBoard gameBoard;
 	
 	protected void setUp() throws Exception {
-		gameBoard = new GameBoard();
+		gameBoard = new GameBoardEmpty();
 		cell = new PropertyCell();
 		cell.setName("TempCell");
 	}
@@ -27,7 +28,7 @@ public class GameboardTest extends TestCase {
 	}
 	
 	public void testCellsForMonopoly() {
-		GameBoard gb = new SimpleGameBoard();
+		GameBoard gb = new GameBoardSimple();
 		Cell[] properties = gb.getPropertiesInMonopoly("blue");
 		assertEquals("Blue 1", properties[0].getName());
 		assertEquals("Blue 2", properties[1].getName());

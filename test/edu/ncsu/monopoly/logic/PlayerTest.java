@@ -7,7 +7,7 @@ import edu.ncsu.monopoly.logic.GameMaster;
 import edu.ncsu.monopoly.logic.Player;
 import edu.ncsu.monopoly.logic.cell.Cell;
 import edu.ncsu.monopoly.logic.gameboarad.GameBoard;
-import edu.ncsu.monopoly.logic.gameboard.mocks.SimpleGameBoard;
+import edu.ncsu.monopoly.logic.gameboard.mocks.GameBoardSimple;
 import junit.framework.TestCase;
 
 public class PlayerTest extends TestCase {
@@ -16,7 +16,7 @@ public class PlayerTest extends TestCase {
 	
 	protected void setUp() throws Exception {
 		gameMaster = GameMaster.instance();
-		gameMaster.setGameBoard(new SimpleGameBoard());
+		gameMaster.setGameBoard(new GameBoardSimple());
         gameMaster.setGUI(new MockGUI());
         gameMaster.setTestMode(true);
         gameMaster.reset();
