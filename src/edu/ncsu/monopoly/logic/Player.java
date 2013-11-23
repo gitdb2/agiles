@@ -1,23 +1,16 @@
 package edu.ncsu.monopoly.logic;
 
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Hashtable;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import edu.ncsu.monopoly.logic.cell.BuyableCell;
 import edu.ncsu.monopoly.logic.cell.Cell;
 import edu.ncsu.monopoly.logic.cell.JailCell;
-import edu.ncsu.monopoly.logic.cell.NotBuyableCell;
 import edu.ncsu.monopoly.logic.cell.PropertyCell;
-import edu.ncsu.monopoly.logic.cell.RailRoadCell;
-import edu.ncsu.monopoly.logic.cell.UtilityCell;
 import edu.ncsu.monopoly.logic.cell.visitor.cell.buyer.VisitorBuyer;
-import edu.ncsu.monopoly.logic.cell.visitor.property.collector.IVisitorCollectCells;
 import edu.ncsu.monopoly.logic.cell.visitor.property.collector.VisitorCollectCells;
 import edu.ncsu.monopoly.logic.gameboarad.GameBoard;
 
@@ -47,11 +40,10 @@ public class Player {
     public void buyProperty(BuyableCell cell, int amount) {
     	cell.setOwner(this);
     	purchasedCells.add(cell);
-    	
     	addToGroupColors(cell);
-    	
         setMoney(getMoney() - amount);
     }
+    
     /**
      * Agrega una celda al mapa de colores y si no existe crea la lista y la inserta con el color como clave
      * @param cell
@@ -64,13 +56,13 @@ public class Player {
     	}
     	tempCelsByColor.add(cell);
 	}
+	
 	public void removeFromGroupColors(BuyableCell cell){
 		List<BuyableCell> coloredCells =  colorGroups.get(cell.getColorGroup());
 		if(coloredCells!= null){
 			coloredCells.remove(cell);
 		}
 	}
-	
 	
 	public boolean canBuyHouse() {
 		return (getMonopolies().length != 0);
@@ -196,15 +188,7 @@ public class Player {
 	public boolean isInJail() {
 		return inJail;
 	}
-//
-//	public int numberOfRR() {
-//		return getPropertyNumberForColor(RailRoadCell.COLOR_GROUP);
-//	}
 
-//	public int numberOfUtil() {
-//		return getPropertyNumberForColor(UtilityCell.COLOR_GROUP);
-//	}
-//	
 	public void payRentTo(Player owner, int rentValue) {
 		if(money < rentValue) {
 			owner.money += money;
@@ -258,8 +242,6 @@ public class Player {
 		VisitorBuyer visitor = new VisitorBuyer(this);
 		cell.acceptVisitorBuyer(visitor);
 	}
-
-	
 
 	/**
 	 * 

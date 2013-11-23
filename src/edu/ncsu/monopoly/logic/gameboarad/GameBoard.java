@@ -1,4 +1,4 @@
-package edu.ncsu.monopoly.logic.gameboarad;
+	package edu.ncsu.monopoly.logic.gameboarad;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
