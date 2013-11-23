@@ -5,7 +5,7 @@ package edu.ncsu.monopoly.logic.cell;
 import edu.ncsu.monopoly.gui.mocks.MockGUI;
 import edu.ncsu.monopoly.logic.GameMaster;
 import edu.ncsu.monopoly.logic.cell.UtilityCell;
-import edu.ncsu.monopoly.logic.gameboarad.GameBoardUtility;
+import edu.ncsu.monopoly.logic.gameboard.mocks.GameBoardUtility;
 import junit.framework.TestCase;
 
 public class UtilityCellTest extends TestCase {

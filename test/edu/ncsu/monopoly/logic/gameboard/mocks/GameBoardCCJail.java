@@ -1,10 +1,11 @@
-package edu.ncsu.monopoly.logic.gameboarad;
+package edu.ncsu.monopoly.logic.gameboard.mocks;
 
 import edu.ncsu.monopoly.logic.card.Card;
 import edu.ncsu.monopoly.logic.card.JailCard;
 import edu.ncsu.monopoly.logic.cell.CardCell;
 import edu.ncsu.monopoly.logic.cell.JailCell;
 import edu.ncsu.monopoly.logic.cell.PropertyCell;
+import edu.ncsu.monopoly.logic.gameboarad.GameBoard;
 
 
 public class GameBoardCCJail extends GameBoard {

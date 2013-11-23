@@ -7,7 +7,7 @@ import edu.ncsu.monopoly.logic.GameMaster;
 import edu.ncsu.monopoly.logic.card.Card;
 import edu.ncsu.monopoly.logic.card.MovePlayerCard;
 import edu.ncsu.monopoly.logic.cell.Cell;
-import edu.ncsu.monopoly.logic.gameboarad.GameBoardCCMovePlayer;
+import edu.ncsu.monopoly.logic.gameboard.mocks.GameBoardCCMovePlayer;
 import junit.framework.TestCase;
 
 public class MovePlayerCardTest extends TestCase {
@@ -33,7 +33,9 @@ public class MovePlayerCardTest extends TestCase {
         gameMaster.movePlayer(0, 2);
         assertTrue(gameMaster.getGUI().isDrawCardButtonEnabled());
         assertFalse(gameMaster.getGUI().isEndTurnButtonEnabled());
+        
         gameMaster.btnDrawCardClicked();
+        
         assertFalse(gameMaster.getGUI().isDrawCardButtonEnabled());
 		Cell cell = gameMaster.getCurrentPlayer().getPosition();
 		assertEquals(gameMaster.getGameBoard().queryCell("Blue 1"), cell);

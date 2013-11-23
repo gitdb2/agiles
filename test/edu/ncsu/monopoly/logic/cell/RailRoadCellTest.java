@@ -5,7 +5,7 @@ package edu.ncsu.monopoly.logic.cell;
 import edu.ncsu.monopoly.gui.mocks.MockGUI;
 import edu.ncsu.monopoly.logic.GameMaster;
 import edu.ncsu.monopoly.logic.cell.RailRoadCell;
-import edu.ncsu.monopoly.logic.gameboarad.GameBoardRailRoad;
+import edu.ncsu.monopoly.logic.gameboard.mocks.GameBoardRailRoad;
 import junit.framework.TestCase;
 
 public class RailRoadCellTest extends TestCase {

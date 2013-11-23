@@ -7,7 +7,7 @@ import edu.ncsu.monopoly.logic.GameMaster;
 import edu.ncsu.monopoly.logic.card.Card;
 import edu.ncsu.monopoly.logic.card.JailCard;
 import edu.ncsu.monopoly.logic.cell.Cell;
-import edu.ncsu.monopoly.logic.gameboarad.GameBoardCCJail;
+import edu.ncsu.monopoly.logic.gameboard.mocks.GameBoardCCJail;
 import junit.framework.TestCase;
 
 public class GoToJailCardTest extends TestCase {
