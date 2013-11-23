@@ -230,6 +230,11 @@ public class Player {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param selectedMonopoly es el color
+	 * @param houses cantidad de casa
+	 */
 	public void purchaseHouse(String selectedMonopoly, int houses) {
 		GameBoard gb = GameMaster.instance().getGameBoard();
 		PropertyCell[] cells = gb.getPropertiesInMonopoly(selectedMonopoly);

@@ -29,7 +29,7 @@ public class PropertyCell extends BuyableCell {
 	}
 
 	public int getRent(int parameter) {
-		if (parameter == 0){
+		if (parameter == Cell.NoInflationParameter){
 			return getParameterlessRent();
 		}
 		else{
@@ -41,7 +41,7 @@ public class PropertyCell extends BuyableCell {
 				}
 			}
 			if(numHouses > 0) {
-				rentToCharge = rent * (numHouses + 1);
+				rentToCharge = rentToCharge * (numHouses + 1);
 			}
 			return rentToCharge;
 		}
@@ -57,7 +57,7 @@ public class PropertyCell extends BuyableCell {
 			}
 		}
 		if(numHouses > 0) {
-			rentToCharge = rent * (numHouses + 1);
+			rentToCharge = rentToCharge * (numHouses + 1);
 		}
 		return rentToCharge;
 	}
