@@ -5,7 +5,7 @@ package edu.ncsu.monopoly.logic.gameboard;
 import edu.ncsu.monopoly.logic.cell.Cell;
 import edu.ncsu.monopoly.logic.cell.PropertyCell;
 import edu.ncsu.monopoly.logic.gameboarad.GameBoard;
-import edu.ncsu.monopoly.logic.gameboarad.SimpleGameBoard;
+import edu.ncsu.monopoly.logic.gameboard.mocks.SimpleGameBoard;
 import junit.framework.TestCase;
 
 

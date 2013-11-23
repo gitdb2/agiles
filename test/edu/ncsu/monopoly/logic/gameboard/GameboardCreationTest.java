@@ -8,8 +8,8 @@ import java.util.List;
 import junit.framework.TestCase;
 import edu.ncsu.monopoly.gui.utils.GameBoardUtil;
 import edu.ncsu.monopoly.logic.gameboarad.GameBoard;
-import edu.ncsu.monopoly.logic.gameboarad.GameBoard14;
-import edu.ncsu.monopoly.logic.gameboarad.SimpleGameBoard;
+import edu.ncsu.monopoly.logic.gameboard.mocks.GameBoard14;
+import edu.ncsu.monopoly.logic.gameboard.mocks.SimpleGameBoard;
 
 public class GameboardCreationTest extends TestCase{
 	

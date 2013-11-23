@@ -1,6 +1,7 @@
-package edu.ncsu.monopoly.logic.gameboarad;
+package edu.ncsu.monopoly.logic.gameboard.mocks;
 
 import edu.ncsu.monopoly.logic.cell.PropertyCell;
+import edu.ncsu.monopoly.logic.gameboarad.GameBoard;
 
 
 public class SimpleGameBoard extends GameBoard {

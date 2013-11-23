@@ -7,7 +7,7 @@ import edu.ncsu.monopoly.logic.GameMaster;
 import edu.ncsu.monopoly.logic.Player;
 import edu.ncsu.monopoly.logic.cell.Cell;
 import edu.ncsu.monopoly.logic.gameboarad.GameBoard;
-import edu.ncsu.monopoly.logic.gameboarad.SimpleGameBoard;
+import edu.ncsu.monopoly.logic.gameboard.mocks.SimpleGameBoard;
 import junit.framework.TestCase;
 
 public class PlayerTest extends TestCase {

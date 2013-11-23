@@ -9,7 +9,7 @@ import edu.ncsu.monopoly.gui.mocks.MockGUI;
 import edu.ncsu.monopoly.logic.GameMaster;
 import edu.ncsu.monopoly.logic.cell.Cell;
 import edu.ncsu.monopoly.logic.cell.PropertyCell;
-import edu.ncsu.monopoly.logic.gameboarad.SimpleGameBoard;
+import edu.ncsu.monopoly.logic.gameboard.mocks.SimpleGameBoard;
 import junit.framework.TestCase;
 
 public class PropertyCellTest extends TestCase {
