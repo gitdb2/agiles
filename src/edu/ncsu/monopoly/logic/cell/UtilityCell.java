@@ -23,12 +23,12 @@ public class UtilityCell extends BuyableCell {
 
 	public int getRent(int diceRoll) {
 		int count = owner.getPropertyNumberForColor(COLOR_GROUP);
-		if(count == 1) {
-			return diceRoll * 4;
-		} else if (count >= 2) {
+		
+		if (count > 1) {
 			return diceRoll * 10;
+		}else{
+			return diceRoll * 4;
 		}
-		return 0;
 	}
 
 	public void playAction() {

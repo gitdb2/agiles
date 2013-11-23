@@ -10,7 +10,7 @@ import edu.ncsu.monopoly.logic.cell.Cell;
 import edu.ncsu.monopoly.logic.gameboard.mocks.GameBoardCCMovePlayer;
 import junit.framework.TestCase;
 
-public class MovePlayerCardTest extends TestCase {
+public class MovePlayerCardCCTest extends TestCase {
     GameMaster gameMaster;
     Card movePlayerCard;
     

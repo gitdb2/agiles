@@ -39,4 +39,8 @@ public class GainMoneyCardTest extends TestCase {
         assertFalse(gameMaster.getGUI().isDrawCardButtonEnabled());
 		assertTrue(gameMaster.getGUI().isEndTurnButtonEnabled());
     }
+    
+    public void testCardLabel() {
+        assertEquals("Get 50 dollars", gainMoneyCard.getLabel());
+    }
 }

@@ -6,7 +6,8 @@ public class FreeParkingCell extends NotBuyableCell {
 		setName("Free Parking");
 	}
 
+	@Override
 	public void playAction() {
-		return;
+		// DO NOTHING
 	}
 }

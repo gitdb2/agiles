@@ -89,13 +89,15 @@ public abstract class GameBoard {
 	}
 
 	public Cell queryCell(String string) {
+		Cell ret = null;
 		for(int i = 0; i < cells.size(); i++){
 			Cell temp = cells.get(i); 
 			if(temp.getName().equals(string)) {
-				return temp;
+				ret = temp;
+				break;
 			}
 		}
-		return null;
+		return ret;
 	}
 	
 	public int queryCellIndex(String string){

@@ -6,9 +6,10 @@ public class GoCell extends NotBuyableCell {
 		setAvailable(false);
 	}
 
+	@Override
 	public void playAction() {
+		// Do NOTHING
+		
 	}
-	
-	public void setName(String name) {
-	}
+
 }
